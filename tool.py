@@ -91,8 +91,4 @@ class DBHelp():
         self.__cur.execute('select char1, char2, char3, char4\
         from idiom where id = ?', (str(random.randint(1, rows + 1)),))
 
-        return ''.join(i for i in self.__cur.fetchall()[0]) # str
-
-    
-if __name__ == "__main__":
-    print(DBHelp().selectInfo('碍手碍脚'))
+        return ''.join(i for i in self.__cur.fetchall()[0])
