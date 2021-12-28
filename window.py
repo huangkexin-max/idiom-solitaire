@@ -64,10 +64,10 @@ class Window():
 
         '''关于'''
         Label(
-            text = 'Gitee: qinzhidao Emali: qinzhidao@foxmail.com',
+            text = 'GitHub: lilongxiang2000',
             font = '微软雅黑 12',
         ).grid(row = 4, column = 0, columnspan = 3)
-        
+
 
         self.__tk.mainloop()
 
@@ -76,7 +76,7 @@ class Window():
         if len(self.__input_entry_text.get()) == 4:
             self.__start_btn.config(text = '重新开始')
             if self.__db_help.checkPy(
-                self.__input_entry_text.get()[0], 
+                self.__input_entry_text.get()[0],
                 self.__show_entry_text.get()[self.__index]
             ):
                 # 回合数 + 1
@@ -110,7 +110,7 @@ class Window():
                 self.__show_entry_text.get().split('→')[-1]
             )
             tkinter.messagebox.showinfo(
-                self.__show_entry_text.get().split('→')[-1] + ' ' + ' '.join(str(i) for i in info[1:]), 
+                self.__show_entry_text.get().split('→')[-1] + ' ' + ' '.join(str(i) for i in info[1:]),
                 info[0])
         if btn == 2:
             self.__show_entry_text.set(self.__db_help.roll())
