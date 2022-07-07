@@ -11,9 +11,9 @@ class DBHelp():
     def selectInfo(self, text: str):
         '''查询该成语详细信息'''
         self.__cur.execute(
-            '''select mean, pytone1, pytone2, pytone3, pytone4 from idiom 
+            '''select mean, pytone1, pytone2, pytone3, pytone4 from idiom
             where char1 = ? and char2 = ? and char3 = ? and char4 = ?
-            ''', 
+            ''',
             (text[-4], text[-3], text[-2], text[-1],)
         )
         info = self.__cur.fetchall()
@@ -31,19 +31,19 @@ class DBHelp():
         # 模糊音处理
         if py[0:2] in ['zh', 'ch', 'sh']:
             self.__cur.execute(
-                'select char1, char2, char3, char4 from idiom where py1 = ? or py1 = ?', 
+                'select char1, char2, char3, char4 from idiom where py1 = ? or py1 = ?',
                 (py[0] + py[2:], py)
             )
             return self.__cur.fetchall()
         elif py[0] in ['z', 'c', 's']:
             self.__cur.execute(
-                'select char1, char2, char3, char4 from idiom where py1 = ? or py1 = ?', 
+                'select char1, char2, char3, char4 from idiom where py1 = ? or py1 = ?',
                 (py, py[0] + 'h' + py[1:])
             )
             return self.__cur.fetchall()
         else:
             self.__cur.execute(
-                'select char1, char2, char3, char4 from idiom where py1 = ?', 
+                'select char1, char2, char3, char4 from idiom where py1 = ?',
                 (py,)
             )
             return self.__cur.fetchall() # [('哀', '思', '如', '潮'), ...]
